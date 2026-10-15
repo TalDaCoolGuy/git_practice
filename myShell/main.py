@@ -6,31 +6,40 @@ current_dir = os.path.dirname(__file__)
 
 while True:
     cmd = input(f"{os.getcwd()}>>>")
+    if cmd:
+        if cmd == "exit":
+            exit("bye")
+        cmds = cmd.split("|")
 
-    if cmd == "exit":
-        exit("bye")
-    cmds = cmd.split("|")
+        for cmd in cmds:
+            cmd = cmd.split()
+            data = b""
+            with open("output.txt","rb") as f:
+                data = f.read()
+            if cmd[0] == "hello":
+                subprocess.call(f"{current_dir}\\hello.bat {current_dir}", shell=True,)
+            elif cmd[0] == "ls":
+                if len(cmd) == 1:
+                    if len(data) > 0:
+                        subprocess.call(f"{current_dir}\\ls.bat {data}", shell=True,)
+                    else:
+                        subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
 
-    for cmd in cmds:
-        cmd = cmd.split()
-        data = b""
-        with open("output.txt","rb") as f:
-            data = f.read()
-        if cmd[0] == "hello":
-            subprocess.call(f"{current_dir}\\hello.bat {current_dir}", shell=True,)
-        elif cmd[0] == "ls":
-            if len(cmd) == 1:
-                if len(data) > 0:
-                    subprocess.call(f"{current_dir}\\ls.bat {data}", shell=True,)
-                else:
+                elif len(cmd) == 2:
                     subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
+                else:
+                    print("not allowed input idk")
+                    break
 
-            elif len(cmd) == 2:
-                subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
             else:
                 print("not allowed input idk")
                 break
 
-        else:
-            print("not allowed input idk")
-            break
+        data = ""
+        with open("output.txt", "rt") as f:
+            data = f.read()
+        with open("output.txt", "wt") as f:
+            f.write("")
+
+        if data:
+            print(data)

@@ -2,4 +2,5 @@ import os
 
 username = os.getlogin()
 
-print(f"hello {username}")
+with open("output.txt","wt") as f:
+    f.write(f"hello {username}")
