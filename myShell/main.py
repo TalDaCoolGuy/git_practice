@@ -6,7 +6,7 @@ current_dir = os.path.dirname(__file__)
 
 while True:
     cmd = input(f"{os.getcwd()}>>>")
-    data = b""
+    data = ""
     if cmd:
         if cmd == "exit":
             exit("bye")
@@ -14,7 +14,7 @@ while True:
 
         for cmd in cmds:
             cmd = cmd.split()
-            with open("output.txt","rb") as f:
+            with open("output.txt","rt") as f:
                 data = f.read()
 
             if cmd[0] == "hello":
@@ -24,7 +24,7 @@ while True:
             elif cmd[0] == "ls":
                 if len(cmd) == 1:
                     if len(data) > 0:
-                        subprocess.call(f"{current_dir}\\ls.bat {current_dir} {data.decode()}", shell=True,)
+                        subprocess.call(f"{current_dir}\\ls.bat {current_dir} {data}", shell=True,)
                     else:
                         subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
                 elif len(cmd) == 2:
@@ -35,7 +35,7 @@ while True:
             elif cmd[0] == "hexdump":
                 if len(cmd) == 1:
                     if len(data) > 0:
-                        subprocess.call(f"{current_dir}\\hexdump.bat {current_dir} {data.decode()}", shell=True,)
+                        subprocess.call(f"{current_dir}\\hexdump.bat {current_dir} {data}", shell=True,)
                     else:
                         subprocess.call(f"{current_dir}\\hexdump.bat {current_dir}", shell=True,)
                 elif len(cmd) == 2:
@@ -43,7 +43,17 @@ while True:
                 else:
                     print("not allowed input idk")
                     break
-
+            elif cmd[0] == "grep":
+                if len(cmd) == 1:
+                    if len(data) > 0:
+                        subprocess.call(f"{current_dir}\\grep.bat {current_dir} {data}", shell=True,)
+                    else:
+                        subprocess.call(f"{current_dir}\\grep.bat {current_dir}", shell=True,)
+                elif len(cmd) == 2:
+                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]}", shell=True,)
+                else:
+                    print("not allowed input idk")
+                    break
             else:
                 print("not allowed input idk")
                 break
