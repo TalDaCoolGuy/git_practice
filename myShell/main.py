@@ -24,9 +24,8 @@ while True:
                         subprocess.call(f"{current_dir}\\ls.bat {data}", shell=True,)
                     else:
                         subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
-
                 elif len(cmd) == 2:
-                    subprocess.call(f"{current_dir}\\ls.bat {current_dir}", shell=True,)
+                    subprocess.call(f"{current_dir}\\ls.bat {current_dir} {cmd[1]}", shell=True,)
                 else:
                     print("not allowed input idk")
                     break
