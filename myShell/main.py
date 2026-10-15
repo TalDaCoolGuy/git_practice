@@ -2,10 +2,14 @@ import os
 import subprocess
 
 current_dir = os.path.dirname(__file__)
-cmds = ["uwu","ls"]#,"hello","hexdump","grep","cd"
+cmds = ["hello","ls"]#,,"hexdump","grep","cd"
 
 while True:
     cmd = input(">>>")
+
+
+
+
     if cmd == "exit":
         exit("bye")
     elif cmd in cmds:

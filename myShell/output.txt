@@ -1,1 +1,1 @@
-['.idea', '.venv', 'cmds', 'main.py']
+['ls.bat', 'ls.py', 'main.py', 'output.txt', 'uwu.bat', 'uwu.py']
