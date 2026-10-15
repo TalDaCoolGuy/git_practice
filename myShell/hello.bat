@@ -1,4 +1,4 @@
 @echo off
-set arg1=%1
-python "%arg1%\hello.py"
+set location=%1
+python "%location%\hello.py"
 exit
