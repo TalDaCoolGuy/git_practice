@@ -1,4 +1,5 @@
 @echo off
-set arg1=%1
-python "%arg1%\ls.py"
+set location=%0
+set action=%1
+python "%location%\ls.py %action%"
 exit
