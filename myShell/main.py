@@ -32,6 +32,7 @@ while True:
                 else:
                     print("not allowed input idk")
                     break
+
             elif cmd[0] == "hexdump":
                 if len(cmd) == 1:
                     if len(data) > 0:
@@ -43,17 +44,16 @@ while True:
                 else:
                     print("not allowed input idk")
                     break
+
             elif cmd[0] == "grep":
-                if len(cmd) == 1:
-                    if len(data) > 0:
-                        subprocess.call(f"{current_dir}\\grep.bat {current_dir} {data}", shell=True,)
-                    else:
-                        subprocess.call(f"{current_dir}\\grep.bat {current_dir}", shell=True,)
-                elif len(cmd) == 2:
-                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]}", shell=True,)
+                if len(cmd) == 2 and len(data) > 0:
+                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]} output.txt", shell=True,)
+                elif len(cmd) == 3:
+                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]} {cmd[2]}", shell=True,)
                 else:
                     print("not allowed input idk")
                     break
+
             else:
                 print("not allowed input idk")
                 break

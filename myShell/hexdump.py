@@ -2,7 +2,7 @@ import os
 import sys
 
 if len(sys.argv) > 1 and sys.argv[1].strip():
-    path = str(sys.argv[1].strip())
+    path = str(sys.argv[1]).strip()
 else:
     path = False
 
