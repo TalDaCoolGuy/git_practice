@@ -1,1 +1,1 @@
-input("uwu?")
+print("UwU >:)")

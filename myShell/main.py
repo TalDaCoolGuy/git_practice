@@ -9,6 +9,6 @@ while True:
     if cmd == "exit":
         exit("bye")
     elif cmd in cmds:
-        subprocess.call(f"{current_dir}\\cmds\\{cmd}.bat {current_dir}", shell=True,)
+        subprocess.call(f"{current_dir}\\{cmd}.bat {current_dir}", shell=True,)
     else:
         print("not allowed input idk")
