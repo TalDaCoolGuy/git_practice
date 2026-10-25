@@ -1,5 +1,6 @@
 import os
 import sys
+current_dir = os.path.dirname(__file__)
 
 if len(sys.argv) > 1 and sys.argv[1].strip():
     path = str(sys.argv[1]).strip()
@@ -9,8 +10,8 @@ else:
 data = "not allowed input idk"
 if path:
     if not os.path.exists(path):
-        if os.path.exists(f"{os.getcwd()}\\path"):
-            path = f"{os.getcwd()}\\path"
+        if os.path.exists(f"{os.getcwd()}\\{path}"):
+            path = f"{os.getcwd()}\\{path}"
         else:
             path = False
 
@@ -18,5 +19,5 @@ if path:
     with open(path, "rb") as f:
         data = f.read().hex()
 
-with open(f"output.txt","wt") as f:
+with open(f"{current_dir}\\output.txt","wt") as f:
     f.write(data)

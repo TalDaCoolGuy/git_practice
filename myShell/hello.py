@@ -1,6 +1,7 @@
 import os
+current_dir = os.path.dirname(__file__)
 
 username = os.getlogin()
 
-with open("output.txt","wt") as f:
+with open(f"{current_dir}\\output.txt","wt") as f:
     f.write(f"hello {username}")

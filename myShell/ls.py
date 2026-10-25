@@ -1,5 +1,6 @@
 import os
 import sys
+current_dir = os.path.dirname(__file__)
 
 if len(sys.argv) > 1 and sys.argv[1].strip():
     path = str(sys.argv[1]).strip()
@@ -28,5 +29,5 @@ if data:
 else:
     output = "not allowed input idk"
 output = output.rstrip("\n")#remove the last \n because for some reson i cant do -= :(
-with open(f"output.txt","wt") as f:
+with open(f"{current_dir}\\output.txt","wt") as f:
     f.write(output)
