@@ -14,7 +14,7 @@ while True:
 
         for cmd in cmds:
             cmd = cmd.split()
-            with open("output.txt","rt") as f:
+            with open(f"{current_dir}\\output.txt", "rt") as f:
                 data = f.read()
 
             if cmd[0] == "hello":
@@ -47,9 +47,22 @@ while True:
 
             elif cmd[0] == "grep":
                 if len(cmd) == 2 and len(data) > 0:
-                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]} output.txt", shell=True,)
+                    subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]} {current_dir}\\output.txt", shell=True,)
                 elif len(cmd) == 3:
                     subprocess.call(f"{current_dir}\\grep.bat {current_dir} {cmd[1]} {cmd[2]}", shell=True,)
+                else:
+                    print("not allowed input idk")
+                    break
+            elif cmd[0] == "cd":
+                if len(cmd) == 2:
+                    if os.path.exists(cmd[1]):
+                        os.chdir(cmd[1])
+                    elif os.path.exists(f"{os.getcwd()}\\{cmd[1]}"):
+                        path = f"{os.getcwd()}\\{cmd[1]}"
+                        os.chdir(path)
+                    else:
+                        print("not allowed input idk")
+                        break
                 else:
                     print("not allowed input idk")
                     break
@@ -60,9 +73,9 @@ while True:
 
 
 
-        with open("output.txt", "rt") as f:
+        with open(f"{current_dir}\\output.txt", "rt") as f:
             data = f.read()
-        with open("output.txt", "wt") as f:
+        with open(f"{current_dir}\\output.txt", "wt") as f:
             f.write("")
 
         if data:
